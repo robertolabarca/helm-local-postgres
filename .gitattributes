@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+templates/** linguist-language=YAML
+*.yaml linguist-language=YAML
+*.yml linguist-language=YAML
