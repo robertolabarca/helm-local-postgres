@@ -1,0 +1,2 @@
+Your basic chat application has been deployed!
+Access the application postgres client

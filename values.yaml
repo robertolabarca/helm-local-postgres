@@ -1,0 +1,13 @@
+# Default values for local-postgres.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
+image:
+  repository: docker.io/library/postgres
+  tag: 18-alpine
+  pullPolicy: IfNotPresent
+  replicas: 1
+service:
+  port: 5432
+  type: NodePort 
