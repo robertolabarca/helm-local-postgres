@@ -12,9 +12,14 @@ spec:
       labels:
         app: {{ .Chart.Name }}
     spec:
-      containers:
+        containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+
           env:
             - name: POSTGRES_USER
               valueFrom:
@@ -36,3 +41,8 @@ spec:
             - name: postgres-port
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+        volumes:
+          - name: postgres-storage
+            persistentVolumeClaim:
+              claimName:  {{ .Chart.Name }}-pvc
+        
